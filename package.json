@@ -16,7 +16,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rescripts build",
-    "test": "rescripts test"
+    "test": "rescripts test",
+    "eject": "react-scripts eject"
   },
   "rescripts": [
     "env"
