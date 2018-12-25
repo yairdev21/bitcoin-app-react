@@ -1,0 +1,26 @@
+.header{
+    border-bottom: 1px solid black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
+    & ul{
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+    }
+    & .activeNavLink{
+        background-color: lightblue;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    & a{
+        color: black;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI";
+        text-decoration: none;
+    }
+    & a:active{
+        padding: 2px;
+        border-radius: 2px 2px 2px 2px;
+        background-color: lightblue;
+        text-decoration: none;
+    }
+}

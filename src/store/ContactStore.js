@@ -5,6 +5,8 @@ export default class ContactStore {
   @observable
   contacts = [];
 
+  @observable
+  currContact = null
 
   constructor(rootStore) {
     this.rootStore = rootStore;

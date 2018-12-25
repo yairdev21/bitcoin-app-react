@@ -13,4 +13,11 @@ export default class UserStore {
     fetchUser() {
         this.user = UserService.getUser();
     }
+
+    @action
+    signup(userName){
+        UserService.signup(userName);
+        this.fetchUser()
+    }
+
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-// import './RobotFilter.scss';
+import './ContactFilter.scss';
 
 export default props => {
   return (
-    <div className="filters">
+    <div className="contactFilter">
       <div>
         <label>
           <input

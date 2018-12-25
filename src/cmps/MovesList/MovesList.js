@@ -1,19 +1,21 @@
 import React from 'react';
-// import './RobotFilter.scss';
+import './MovesList.scss';
 
-export default props => {
+export default ({ movesList, title }) => {
   return (
-    <div className="MovesList">
-      <div>
-        <label>
-          <input
-            style={{ float: 'left', fontSize: '20px' }}
-            type="number"
-            value={props.value}
-            onChange={props.onTransferCoins}
-          />
-        </label>
-      </div>
+    movesList && <div className="movesList">
+      <h1>{title}</h1>
+      <ul className="contact-list">
+        {
+          movesList.map(move =>
+            <li key={move.at}>
+              <div><b>To:</b> {move.to}</div>
+              <div><b>At:</b> {JSON.stringify(new Date(move.at))}</div>
+              <div><b>Amount:</b> {move.amount}</div>
+            </li>
+          )
+        }
+      </ul>
     </div>
   );
 };

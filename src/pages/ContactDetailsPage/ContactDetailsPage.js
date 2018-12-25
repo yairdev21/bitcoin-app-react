@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
+import { Button } from 'react-bootstrap';
 
-// import MovesList from '../../cmps/MovesList'
+import MovesList from '../../cmps/MovesList'
 import TransferFund from '../../cmps/TransferFund'
 
 import ContactService from '../../services/ContactService.js'
 import UserService from '../../services/UserService.js'
+
+import './ContactDetailsPage.scss'
 
 @inject('store')
 @observer
@@ -32,29 +35,24 @@ class ContactDetailsPage extends Component {
     }
 
     render() {
-        const contact = this.contact
-        const { user } =  this.props.store.userStore
+        if (!this.contact) return <div>Loading</div>
+        const { user } = this.props.store.userStore
+        const contactMoves = user.moves.filter(move => { return move.toId === this.contact._id })
         return (
-            contact &&
-            <section className="contact-details">
-                <button onClick={this.goBack}>Back</button>
-                <div>
-                    <img src={`https://robohash.org/${contact._id}.png`} alt="" />
+            this.contact &&
+            <section className="contactDetailsPage">
+                <div className="buttons-container">
+                    <button className="button button5" onClick={this.goBack}>Back</button>
+                    <Link className="button button1" to={`/contact/edit/${this.contact._id}`}>Edit</Link>
                 </div>
-                <h1>
-                    Name: {contact.name}
-                </h1>
-                <h2>
-                    Email:    {contact.email}
-                </h2>
-                <h2>
-                    Phone:    {contact.phone}
-                </h2>
-                <Link to={`/contact/edit/${contact._id}`}>Edit</Link>
-                {/* <MovesList title={contact} moves-list={user.coinCount}  /> */}
-                <TransferFund contact={contact} maxCoins={user.coinCount} onTransferCoins={this.handleTransferCoins} />
-
-
+                <div>
+                    <img src={`https://api.adorable.io/avatars/120/${this.contact._id}.png`} alt="" />
+                </div>
+                <h3>  {this.contact.name} </h3>
+                <li> <b>Phone:</b> {this.contact.phone} </li>
+                <li> <b>Email:</b> {this.contact.email} </li>
+                <TransferFund contact={this.contact} maxCoins={user.coinCount} onTransferCoins={this.handleTransferCoins} />
+                <MovesList title={"Your Moves"} movesList={contactMoves} />
             </section>
         )
 

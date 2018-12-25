@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import ContactService from '../../services/ContactService.js'
 
+import './ContactEditPage.scss'
+
 class ContactEditPage extends Component {
 
     state = {
@@ -48,25 +50,27 @@ class ContactEditPage extends Component {
         const { contact } = this.state
         return (
             contact &&
-            <section className="contact-edit">
-                <button onClick={this.goBack}>Back</button>
+            <section className="contactEditPage">
+               <div className="buttons-container">
+                <button className="button button5" onClick={this.goBack}>Back</button>
+                {(contact._id && < button className="button button3" onClick={this.remove}>Delete</button>)}
+               </div>
                 <h1>
-                    {(contact._id && <img src={`https://robohash.org/${contact._id}.png`} alt="" />)}
+                    {(contact._id && <img src={`https://api.adorable.io/avatars/120/${contact._id}.png`} alt="" />)}
                 </h1>
-                <form onSubmit={this.handleSubmit}>
-                    <h2>
-                        Name:<input type="text" name="name" value={contact.name} onChange={this.handleChange} />
-                    </h2>
-                    <h2>
-                        Email:<input type="text" name="email" value={contact.email} onChange={this.handleChange} />
-                    </h2>
-                    <h2>
-                        Phone:<input type="text" name="phone" value={contact.phone} onChange={this.handleChange} />
-                    </h2>
-                    <button>Save</button>
+                <form className="formContainer" onSubmit={this.handleSubmit}>
+                    <h3>
+                        Name:&nbsp;<input type="text" name="name" value={contact.name} onChange={this.handleChange} />
+                    </h3>
+                    <h3>
+                        Email:&nbsp;<input type="text" name="email" value={contact.email} onChange={this.handleChange} />
+                    </h3>
+                    <h3>
+                        Phone:&nbsp;<input type="text" name="phone" value={contact.phone} onChange={this.handleChange} />
+                    </h3>
+                    <button className="button button1">Save</button>
                 </form>
-                <button onClick={this.remove}>Delete</button>
-
+ 
             </section>
         )
 

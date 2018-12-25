@@ -1,22 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// import '../assets/HomePage.css'
+import './ContactPreview.scss'
 
 
 
 const ContactPreview = ({contact})=> {
         return (
             contact && 
-            <li  className="contact-preview">
-                  <h3>
-                  <img src={`https://robohash.org/${contact._id}.png`} alt=""/>
-                    <span>{contact.name}</span>
-                  </h3>
-                  <Link to={`/contact/${contact._id}`}>Details</Link>
+            <li  className="contactPreview">
+                  <img src={`https://api.adorable.io/avatars/110/${contact._id}.png`} alt=""/>
+                    <h2>{contact.name}</h2>
+                  <Link className="button button1" to={`/contact/${contact._id}`}>Details</Link>
             </li>
         )
 }
 
 
-export default  ContactPreview
+export default ContactPreview

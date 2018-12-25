@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
-import UserService from '../../services/UserService.js'
 import BitcoinService from '../../services/BitcoinService.js'
+import MovesList from '../../cmps/MovesList'
+import { observable } from 'mobx';
 
+import './HomePage.scss'
+
+@inject('store')
+@observer
 class HomePage extends Component {
 
-    state = {
-        user: null,
-        BTC: null
-    }
+    @observable
+    user = this.props.store.userStore.user
+
+    @observable
+    BTC = null
 
     async componentDidMount() {
-        const user = await UserService.getUser();
-        const BTC = await BitcoinService.getBTC(user.coinCount);
-        // const BTC = 0.5
-        this.setState({ user, BTC })
-
+        this.BTC = await BitcoinService.getBTC(this.props.store.userStore.user.coinCount);
     }
-
     render() {
-
-        const { user, BTC } = this.state
+        const lastMoves = this.user.moves.filter((move, idx, moves) => { return idx > (moves.length - 4) })
         return (
-            user && <section className="homepage">
-                <h1>Hello {user.name}!</h1>
-                <h2>Coins: {user.coinCount}</h2>
-                <h2>BTC: {BTC} </h2>
+            this.user && <section className="homePage">
+                <h1>Hello {this.user.name}!</h1>
+                <h4>Coins: {this.user.coinCount}</h4>
+                <h4>BTC: {this.BTC} </h4>
+                <MovesList title={"Your Last 3 Moves"} movesList={lastMoves} />
+               
+
             </section>
         )
 

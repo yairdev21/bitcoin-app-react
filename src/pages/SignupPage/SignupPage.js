@@ -1,9 +1,7 @@
 
 import React, { Component } from 'react'
-import UserService from '../../services/UserService'
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
-
 
 import './SignupPage.css'
 
@@ -13,22 +11,20 @@ class SignupPage extends Component {
     userStore = this.props.store.userStore
 
     @observable
-    user = ''
+    userName = ''
 
     handleChange = e => {
-        this.user = e.target.value;
+        this.userName = e.target.value;
     };
 
     handleSubmit = e => {
         e.preventDefault();
-        UserService.signup(this.user);
-        this.userStore.fetchUser()
-        const { history } = this.props;
-        history.push('/');
+        this.userStore.signup(this.userName);
+        this.props.history.push('/');
     };
 
     render() {
-        const user = this.user
+        const user = this.userName
         return (
             <div>
                 <h1>Login</h1>
