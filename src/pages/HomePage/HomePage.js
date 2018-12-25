@@ -21,7 +21,7 @@ class HomePage extends Component {
         this.BTC = await BitcoinService.getBTC(this.props.store.userStore.user.coinCount);
     }
     render() {
-        const lastMoves = this.user.moves.filter((move, idx, moves) => { return idx > (moves.length - 4) })
+        const lastMoves = this.user.moves.filter((move, idx, moves) => { return idx > (moves.length - 4) }).reverse()
         return (
             this.user && <section className="homePage">
                 <h1>Hello {this.user.name}!</h1>

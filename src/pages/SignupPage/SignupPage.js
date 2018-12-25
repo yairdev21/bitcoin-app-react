@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 
-import './SignupPage.css'
+import './SignupPage.scss'
 
 @inject('store')
 @observer
@@ -26,11 +26,11 @@ class SignupPage extends Component {
     render() {
         const user = this.userName
         return (
-            <div>
+            <div className="signupPage">
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" name="name" value={user} onChange={this.handleChange} />
-                    <button>Signup</button>
+                    <button className="button button1">Signup</button>
                 </form>
             </div>
         )
