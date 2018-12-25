@@ -67,9 +67,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "rescripts": [
-    "env"
-  ],
+  
   "eslintConfig": {
     "extends": "react-app"
   },
