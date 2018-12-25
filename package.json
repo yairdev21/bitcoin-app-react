@@ -1,4 +1,5 @@
 {
+  "homepage": "https://yairweiss1.github.io/bitcoin-app",
   "name": "bitcoin",
   "version": "0.1.0",
   "private": true,
@@ -61,8 +62,10 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "rescripts build",
-    "test": "rescripts test"
+    "build": "node scripts/build.js",
+    "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "rescripts": [
     "env"
