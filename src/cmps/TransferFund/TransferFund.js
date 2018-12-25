@@ -4,15 +4,28 @@ import React from 'react'
 import './TransferFund.css'
 
 const TransferFund = (props) => {
+    var amount
     return (
-        contacts && <ul className="contact-list">
-            {
-                contacts.map(contact =>
-                    <ContactPreview key={contact._id} contact={contact} />
-                )
-            }
-        </ul>
-    )
+        <div className="MovesList">
+            <form onSubmit={e => {
+                e.preventDefault()
+                props.onTransferCoins(amount)
+            }} >
+                <span>Transfer Fund:</span>
+                <label>
+                    <input
+                        type="number"
+                        min="0"
+                        max={props.maxCoins}
+                        value={props.value}
+                        onChange={e => amount = e.target.value}
+                        placeholder="numbers only"
+                    />
+                </label>
+                <button>Transfer</button>
+            </form>
+        </div>
+    );
 }
 
 export default TransferFund

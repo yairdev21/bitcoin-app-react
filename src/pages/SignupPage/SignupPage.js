@@ -1,34 +1,40 @@
 
 import React, { Component } from 'react'
 import UserService from '../../services/UserService'
+import { observable } from 'mobx';
+import { observer, inject } from 'mobx-react';
+
 
 import './SignupPage.css'
 
-
+@inject('store')
+@observer
 class SignupPage extends Component {
-    state = {
-        user: null
-    }
+    userStore = this.props.store.userStore
+
+    @observable
+    user = ''
+
     handleChange = e => {
-        this.setState({ user: e.target.value });
+        this.user = e.target.value;
     };
 
-    handleSubmit = async e => {
+    handleSubmit = e => {
         e.preventDefault();
-        await UserService.signup(this.state.user);
-        this.props.onSignup(this.state.user)
+        UserService.signup(this.user);
+        this.userStore.fetchUser()
         const { history } = this.props;
         history.push('/');
     };
 
     render() {
-        const {user} = this.state
+        const user = this.user
         return (
             <div>
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
-                <input type="text" name="name" value={user||''} onChange={this.handleChange} />
-                <button>Signup</button>
+                    <input type="text" name="name" value={user} onChange={this.handleChange} />
+                    <button>Signup</button>
                 </form>
             </div>
         )

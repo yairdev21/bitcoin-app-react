@@ -35,7 +35,7 @@ class ContactEditPage extends Component {
         e.preventDefault();
         await ContactService.saveContact(this.state.contact);
         const { history } = this.props;
-        history.push('/contact');
+        history.push(`/contact/${this.props.match.params.id}`);
     };
     goBack = () => {
         const { history } = this.props;
@@ -49,6 +49,7 @@ class ContactEditPage extends Component {
         return (
             contact &&
             <section className="contact-edit">
+                <button onClick={this.goBack}>Back</button>
                 <h1>
                     {(contact._id && <img src={`https://robohash.org/${contact._id}.png`} alt="" />)}
                 </h1>
@@ -65,8 +66,6 @@ class ContactEditPage extends Component {
                     <button>Save</button>
                 </form>
                 <button onClick={this.remove}>Delete</button>
-                ............
-                <button onClick={this.goBack}>Back</button>
 
             </section>
         )

@@ -1,40 +1,41 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { observer, inject } from 'mobx-react';
+import { observable } from 'mobx';
+
+
 
 import ContactList from '../../cmps/ContactList'
 import ContactFilter from '../../cmps/ContactFilter'
 
-import ContactService from '../../services/ContactService'
 // import '../assets/HomePage.css'
 
 
-
+@inject('store')
+@observer
 class ContactPage extends Component {
+    contactStore = this.props.store.contactStore
 
-    state = {
-        contacts: null,
-        nameFilter: null
-    }
+    @observable
+    nameFilter = ''
 
     async componentDidMount() {
-        const contacts = await ContactService.getContacts();
-        this.setState({ contacts })
-
+        this.contactStore.fetchContacts()
     }
 
     handleNameChange = async e => {
         const { value } = e.target;
-        const contacts = await ContactService.getContacts({ term: value });
-        this.setState({ contacts, nameFilter: value });
+        this.contactStore.fetchContacts({ term: value });
+        this.nameFilter = value;
     };
 
     render() {
-        const { contacts } = this.state
+        const { contacts } = this.contactStore
         return (
             contacts && <section className="contact-page">
                 <Link to="/contact/edit">Add Contact</Link>
                 <ContactFilter
-                    value={this.state.nameFilter}
+                    value={this.nameFilter}
                     onFilterNameChange={this.handleNameChange} />
                 <ContactList contacts={contacts} />
             </section>
@@ -43,5 +44,5 @@ class ContactPage extends Component {
     }
 }
 
-export default  ContactPage
+export default ContactPage
 

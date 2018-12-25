@@ -7,9 +7,9 @@ export default props => {
       <div>
         <label>
           <input
-            style={{ float: 'left', fontSize: '20px' }}
+            placeholder="Search Contact"
             type="text"
-            value={props.value||''}
+            value={props.value}
             onChange={props.onFilterNameChange}
           />
         </label>
