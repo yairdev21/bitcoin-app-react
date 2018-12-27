@@ -4,7 +4,7 @@ const user =
 {
     "_id": "5a56640269f443a5d64b32xd",
     "email": "puki@renovize.com",
-    "name": null,
+    "name": '',
     "phone": "+1 (968) 593-3859",
     "coinCount": "30",
     "moves": []
@@ -19,9 +19,11 @@ function getUser() {
 function signup(name) {
     user.name = name
     StorageService.saveToStorage('user', user)
+    console.log('user:', user);
 }
 
 function addMove(contact, amount) {
+    const user = StorageService.loadFromStorage('user')
     if (amount > user.coinCount) return alert('You have only ', user.coinCount, ' coins')
     user.coinCount -= amount
     user.moves.push({
