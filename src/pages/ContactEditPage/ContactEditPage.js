@@ -38,7 +38,7 @@ class ContactEditPage extends Component {
         await ContactService.saveContact(this.state.contact);
         const { history } = this.props;
         if (this.props.match.params.id) history.push(`/contact/${this.props.match.params.id}`);
-        else history.push(`/contact/`);
+        else if(!this.props.match.params.id) history.push('/contact/');
     };
     goBack = () => {
         const { history } = this.props;
