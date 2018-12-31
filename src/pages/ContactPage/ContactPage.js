@@ -25,7 +25,7 @@ class ContactPage extends Component {
 
     handleNameChange = async e => {
         const { value } = e.target;
-        this.contactStore.fetchContacts({ term: value });
+        this.contactStore.fetchContacts({ term: value.toLocaleLowerCase() });
         this.nameFilter = value;
     };
 
