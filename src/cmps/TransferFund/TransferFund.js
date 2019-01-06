@@ -24,7 +24,7 @@ const TransferFund = (props) => {
                             placeholder="numbers only"
                         />
                     </label>
-                    <button className="button button1"><b>Transfer</b></button>
+                    <button className="button"><b>Transfer</b></button>
                 </div>
             </form>
         </div>

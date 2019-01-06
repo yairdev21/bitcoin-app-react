@@ -23,6 +23,7 @@ function signup(name) {
 }
 
 function addMove(contact, amount) {
+    if (!amount) return
     const user = StorageService.loadFromStorage('user')
     if (amount > user.coinCount) return alert('You have only ', user.coinCount, ' coins')
     user.coinCount -= amount

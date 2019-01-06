@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
 
@@ -37,7 +38,7 @@ class ContactPage extends Component {
                     value={this.nameFilter}
                     onFilterNameChange={this.handleNameChange} />
                 <ContactList contacts={contacts} />
-                <Link className="addcontactButton" to="/contact/edit">+</Link>
+                <Link className="addContactButton" to="/contact/edit"> <FontAwesomeIcon size="3x" icon="plus-circle"/></Link>
             </section>
         )
 

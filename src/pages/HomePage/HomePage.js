@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 import BitcoinService from '../../services/BitcoinService.js'
 import MovesList from '../../cmps/MovesList'
@@ -23,10 +25,10 @@ class HomePage extends Component {
     render() {
         const lastMoves = this.user.moves.filter((move, idx, moves) => { return idx > (moves.length - 4) }).reverse()
         return (
-            this.user && <section className="homePage">
+            this.user && this.BTC && <section className="homePage">
                 <h1>Hello {this.user.name}!</h1>
-                <h4>Coins: {this.user.coinCount}</h4>
-                <h4>BTC: {this.BTC} </h4>
+                <h4><FontAwesomeIcon icon="coins" />Coins: {this.user.coinCount}</h4>
+                <h4><FontAwesomeIcon icon="dollar-sign" /> &nbsp;BTC: {this.BTC.toLocaleString()}$ </h4>
                 <MovesList title={"Your Last 3 Moves"} movesList={lastMoves} />
                
 

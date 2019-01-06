@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 import MovesList from '../../cmps/MovesList'
 import TransferFund from '../../cmps/TransferFund'
@@ -41,8 +43,12 @@ class ContactDetailsPage extends Component {
             this.contact &&
             <section className="contactDetailsPage">
                 <div className="buttons-container">
-                    <button className="button button5" onClick={this.goBack}>Back</button>
-                    <Link className="button button1" to={`/contact/edit/${this.contact._id}`}>Edit</Link>
+                    <div className="button" onClick={this.goBack}>
+                        <FontAwesomeIcon size="lg" icon="arrow-circle-left" />
+                    </div>
+                    <Link className="button" to={`/contact/edit/${this.contact._id}`}>
+                        <FontAwesomeIcon size="lg" icon="user-edit" />
+                    </Link>
                 </div>
                 <div>
                     <img src={`https://api.adorable.io/avatars/120/${this.contact._id}.png`} alt="" />

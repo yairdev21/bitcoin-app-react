@@ -27,9 +27,8 @@ class SignupPage extends Component {
         const user = this.userName
         return (
             <div className="signupPage">
-                <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="name" value={user} onChange={this.handleChange} />
+                    <input type="text" placeholder="Enter Your Name" name="name" value={user} onChange={this.handleChange} />
                     <button className="button button1">Signup</button>
                 </form>
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import ContactService from '../../services/ContactService.js'
 
@@ -38,7 +39,7 @@ class ContactEditPage extends Component {
         await ContactService.saveContact(this.state.contact);
         const { history } = this.props;
         if (this.props.match.params.id) history.push(`/contact/${this.props.match.params.id}`);
-        else if(!this.props.match.params.id) history.push('/contact/');
+        else if (!this.props.match.params.id) history.push('/contact/');
     };
     goBack = () => {
         const { history } = this.props;
@@ -52,10 +53,16 @@ class ContactEditPage extends Component {
         return (
             contact &&
             <section className="contactEditPage">
-               <div className="buttons-container">
-                <button className="button button5" onClick={this.goBack}>Back</button>
-                {(contact._id && < button className="button button3" onClick={this.remove}>Delete</button>)}
-               </div>
+                <div className="buttons-container">
+                    <div className="button" onClick={this.goBack}>
+                        <FontAwesomeIcon size="lg" icon="arrow-circle-left" />
+                    </div>
+                    {(contact._id && < div className="button" onClick={this.remove}>
+                        <FontAwesomeIcon size="lg" icon="trash-alt" />
+                    </div>)}
+                </div>
+                {(contact._id && <h1>Edit Contact</h1>)}
+                {(!contact._id && <h1>Add Contact</h1>)}
                 <h1>
                     {(contact._id && <img src={`https://api.adorable.io/avatars/120/${contact._id}.png`} alt="" />)}
                 </h1>
@@ -69,9 +76,9 @@ class ContactEditPage extends Component {
                     <h3>
                         Phone:&nbsp;<input type="text" name="phone" value={contact.phone} onChange={this.handleChange} />
                     </h3>
-                    <button className="button button1">Save</button>
+                    <button className="save-button">Save</button>
                 </form>
- 
+
             </section>
         )
 

@@ -11,9 +11,14 @@ import ContactDetailsPage from './pages/ContactDetailsPage';
 import ContactEditPage from './pages/ContactEditPage';
 import StatisticPage from './pages/StatisticPage';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faHome, faUsers, faChartLine, faDollarSign, faCoins, faUserEdit, faArrowCircleLeft, faTrashAlt, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import './assets/App.css';
+
+library.add(faHome, faUsers, faChartLine, faDollarSign, faCoins, faUserEdit, faArrowCircleLeft, faTrashAlt, faPlusCircle)
+
 // import UserService from './services/UserService.js'
 
-import './assets/App.css';
 
 const PrivateRoute = props => {
   return props.isLoggedIn ? <Route {...props} /> : <Redirect to="/signup" />;
@@ -24,13 +29,13 @@ const PrivateRoute = props => {
 class App extends Component {
 
   render() {
-    const { user } =  this.props.store.userStore
+    const { user } = this.props.store.userStore
     return (
       <Router>
         <div>
           {user && <Header />}
           <Switch>
-            <Route path="/signup" render={(props) => <SignupPage {...props}  />} />
+            <Route path="/signup" render={(props) => <SignupPage {...props} />} />
             <PrivateRoute isLoggedIn={!!user} path="/" exact component={HomePage} />
             <PrivateRoute isLoggedIn={!!user} path="/contact/edit/:id?" component={ContactEditPage} />
             <PrivateRoute isLoggedIn={!!user} path="/contact/:id" component={ContactDetailsPage} />

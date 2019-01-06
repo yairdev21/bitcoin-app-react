@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import BitcoinService from '../../services/BitcoinService.js'
 import Chart from '../../cmps/Chart'
 
+import './StatisticPage.scss'
 
 class StatisticPage extends Component {
 
@@ -20,7 +21,7 @@ class StatisticPage extends Component {
 
         const { marketPrice, confirmedTransactions } = this.state
         return (
-            marketPrice && <section className="home-page">
+            marketPrice && <section className="statisticPage">
                 <Chart currChart={marketPrice} />
                 <hr />
                 <Chart currChart={confirmedTransactions} />

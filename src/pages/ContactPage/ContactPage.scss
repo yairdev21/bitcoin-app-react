@@ -1,22 +1,16 @@
 .contactPage {
-    
-    & .addcontactButton{
-        position: fixed;
-        bottom: 1vh;
-        right:2vw;
-        font-size: 25px;
-        background-color: white;
-        border: 2px solid blue;
-        padding: 5px 14px 10px 14px;
-        color: black;
-        border-radius: 50%;
+    padding-top: 8vh;
+    & .addContactButton{
         text-decoration: none;
+        position: fixed;
+        bottom: 5vh;
+        right:5vw;
         transition-duration: 0.4s;
         cursor: pointer;
+        color: black;
     }
-    .addcontactButton:hover{
-        background-color: blue;
-        color: white;
+    .addContactButton:hover{
+        color: blue;
         
     }
 }

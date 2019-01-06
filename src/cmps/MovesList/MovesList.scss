@@ -1,5 +1,4 @@
 .movesList {
-    background-color: lightgray;
     border-radius: 10px 10px 10px 10px;
     margin: 3vw;
     & h1{
@@ -11,9 +10,11 @@
         padding: 20px;
         list-style: none;
         & li{
-            padding: 5px;
-            border: 1px solid;
-            border-radius: 5px 5px 5px 5px;
+            color: black;
+            background-color: rgba(173, 216, 230, 0.753);
+            width: 50vw;
+            padding-right: 5px;
+            border-radius: 10px 10px 10px 10px;
             margin: 5px;
             & div{
                 padding: 2px;

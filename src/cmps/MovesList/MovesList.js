@@ -10,7 +10,8 @@ export default ({ movesList, title }) => {
           movesList.map(move =>
             <li key={move.at}>
               <div><b>To:</b> {move.to}</div>
-              <div><b>At:</b> {JSON.stringify(new Date(move.at))}</div>
+              <div><b>At:</b> {new Date(move.at).toLocaleTimeString() +
+      ' | ' + new Date(move.at).toLocaleDateString()}</div>
               <div><b>Amount:</b> {move.amount}</div>
             </li>
           )
