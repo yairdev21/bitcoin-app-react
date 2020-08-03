@@ -1,0 +1,16 @@
+{
+  "short_name": "Bitcoin App",
+  "name": "Bitcoin App",
+  "icons": [
+    {
+      "src": "./img/BC_Logo_.png",
+      "sizes": "64x64 32x32 24x24 16x16 128x128 144x144 192x192 256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "standalone": "true",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

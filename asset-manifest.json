@@ -1,0 +1,16 @@
+{
+  "main.css": "/bitcoin-app-react/static/css/main.0c543b78.chunk.css",
+  "main.js": "/bitcoin-app-react/static/js/main.3924f4bc.chunk.js",
+  "main.js.map": "/bitcoin-app-react/static/js/main.3924f4bc.chunk.js.map",
+  "static/js/1.099c3c9b.chunk.js": "/bitcoin-app-react/static/js/1.099c3c9b.chunk.js",
+  "static/js/1.099c3c9b.chunk.js.map": "/bitcoin-app-react/static/js/1.099c3c9b.chunk.js.map",
+  "runtime~main.js": "/bitcoin-app-react/static/js/runtime~main.417f6922.js",
+  "runtime~main.js.map": "/bitcoin-app-react/static/js/runtime~main.417f6922.js.map",
+  "static/css/main.0c543b78.chunk.css.map": "/bitcoin-app-react/static/css/main.0c543b78.chunk.css.map",
+  "static/media/SignupPage.scss": "/bitcoin-app-react/static/media/Bitcoin.25b232f2.png",
+  "static/media/App.css": "/bitcoin-app-react/static/media/Exo-Regular.d087e831.ttf",
+  "static/media/HomePage.scss": "/bitcoin-app-react/static/media/bitcoin-bg.ede264f1.jpg",
+  "index.html": "/bitcoin-app-react/index.html",
+  "precache-manifest.8e27fe313b8cef21dd963d84e228482f.js": "/bitcoin-app-react/precache-manifest.8e27fe313b8cef21dd963d84e228482f.js",
+  "service-worker.js": "/bitcoin-app-react/service-worker.js"
+}
